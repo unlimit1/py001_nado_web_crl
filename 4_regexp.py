@@ -25,3 +25,5 @@ print_match(p.search("good care")) # search 주어진 문자열 중 조건과 �
 print('--------------------')
 print(p.findall("good care in cafe")) # findall 일치하는 모든 부분을 리스트로 반환
 
+# https://www.w3schools.com/python/python_regex.asp
+# https://www.w3schools.com/python/python_regex.asp
