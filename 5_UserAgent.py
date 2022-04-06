@@ -8,3 +8,5 @@ res = requests.get(url, headers=header) # 왜 user agent 를 넣으면 에러가
 res.raise_for_status()
 with open("nado.html", "w", encoding="utf8") as f:
     f.write(res.text)
+
+# gitpod 에서 파일변경
