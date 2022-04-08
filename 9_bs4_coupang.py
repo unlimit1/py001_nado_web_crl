@@ -20,18 +20,26 @@ for p in range(1,6) : # 1~5 페이지 조회
     res.raise_for_status()
     soup = BeautifulSoup(res.text, "lxml")
 
+    # 한 페이지 안 모든 해당 li 에 대하여 가져오기 
     products = soup.find_all('li', attrs={'class':re.compile('^search-product')}) #class값을 정규표현식으로 찾기!!
     for no, prd in enumerate(products):                                           #enumerate 활용, type(prd):<class 'bs4.element.Tag'> 
+        # 상품명
         print(f'[{str(p)}-{no+1:2d}]', prd.find("div",attrs={'class':'name'}).get_text())              #element내에서 tag 와 attrs 조건으로 맨 처음것 찾기 
+        # 로켓프레쉬 배지
         badge_rocket = prd.find("span",attrs={'class':'badge rocket'})        #결과가 없는 건을 위하여 먼저 조회
         print('[로켓프레쉬]', end='') if badge_rocket else print('', end='')   #다음줄에서 if로 처리, if 한줄처리 문법!!
+        # 가격
         print(prd.find("strong",attrs={'class':'price-value'}).get_text(),'원\t', end='')
+        # 100g당 가격
         unit_price = prd.find("span",attrs={'class':'unit-price'})
         print(unit_price.get_text(), end='') if unit_price else print('단위가격없음\t', end='')
+        # 상품평 수
         rate_count = prd.find("span",attrs={'class':'rating-total-count'})
         print('평'+rate_count.get_text()[1:-1],'\t', end='') if rate_count else print('평없음', end='')
+        # 별점
         print('*'+prd.find("span",attrs={'class':'star'}).get_text(),'\t', end='')
         # print(type(prd.find('a')),  type(prd.find('a')['href']))    #  <class 'bs4.element.Tag'>  <class 'str'>
+        # 링크
         print('\t', 'https://www.coupang.com'+prd.find('a')['href'])          
         print('', end='\n')
     
