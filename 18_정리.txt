@@ -1,0 +1,39 @@
+웹스크래핑
+ - HTML, CSS, JavaScript
+ - XPath, full XPath .. 부모, 자식, 형제
+
+정규식 
+ - . : 하나의 문자, ^, $
+ - match() 처음부터 일치하는지
+   search() 일치하는 것이 있는지
+   findall() 일치하는 것 모두 리스트로...
+
+User-Agent
+
+Requests : html 읽어오기, 빠르다, 동적처리 불가
+    res.raise_for_status()
+Selenium : 느리지만, 동적처리 가능
+    설치된 크롬버전에 맞는 크롬드라이버가 반드시 있어야 함
+    find_element(s)_by_ id, class_name, link_text, XPath
+
+WebDriverWait()
+
+스크롤 내리기
+
+BeautifulSoup
+    find      첫번째
+    find_all  전부 리스트로
+    find_next_sibling(s) 다음 형제 찾기
+    find_previous_sibling(s)
+
+    soup["href"]
+    soup.get_text()
+
+이미지 다운로드
+    with open("파일명","wb") as f:
+        f.write(res.content)
+
+CSV
+    import csv 
+    f = open(filename, "w", encoding="utf-8-sig", newline="")
+
